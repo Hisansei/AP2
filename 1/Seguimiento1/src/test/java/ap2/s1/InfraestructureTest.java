@@ -1,21 +1,45 @@
 package ap2.s1;
 import ap2.s1.model.Billboard;
-import org.junit.*;
-public class InfraestructureTest {
-    @Test
-    public void test(){
-        //S
+import ap2.s1.model.InfraestructureDepartment;
+import junit.framework.TestCase;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class InfraestructureTest extends TestCase {
+    private InfraestructureDepartment id = new InfraestructureDepartment();
+    private ArrayList<Billboard> billboardTests;
+
+    @Override
+    public void setUp(){
+        billboardTests = new ArrayList<>();
+        Random r = new Random();
+        for (int i = 0; i < 100; i++){
+            double w = r.nextDouble(100.0, 999.0);
+            double h = r.nextDouble(100.0, 999.0);
+            boolean ui = r.nextBoolean();
+            String b = "Caso " + (i+1);
+            Billboard billboardTest = new Billboard(w, h, ui, b);
+            billboardTests.add(billboardTest);
+        }
+        id.setBillboards(billboardTests);
     }
-    public void calculatePromWTest(Billboard billboard) {
-        Billboard billboardTest = new Billboard();
+    //@Test
+    public void testCalculatePromW() {
+        assertNotNull(id.calculateAvgW());
     }
-    public double calculatePromHTest() {
-        return 0.0;
+    //@Test
+    public void testCalculatePromH() {
+        assertNotNull(id.calculateAvgH());
     }
-    public int calculateUseTest() {
-        return 0;
+    public void testCalculateAvgArea() {
+        assertNotNull(id.calculateAvgArea());
     }
-    public int calculateBrandTest() {
-        return 0;
+    //@Test
+    public void testCalculateUse() {
+        assertNotNull(id.calculateUse());
+    }
+    //@Test
+    public void testCalculateBrand() {
+        assertNotNull(id.calculateBrand());
     }
 }

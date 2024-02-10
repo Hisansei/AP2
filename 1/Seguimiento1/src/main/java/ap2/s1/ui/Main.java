@@ -6,5 +6,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         InfraestructureDepartment id = new InfraestructureDepartment();
         id.loadBillboard();
+        System.out.println(id.getBillboardList());
+        //System.out.println(id.calculateBrand());
     }
 }
